@@ -48,7 +48,7 @@ def page_user_details():
     st.write('Please provide further details.')
 
     # Input fields for user details
-    gender = st.selectbox('Gender', ['Male', 'Female', 'Other'])
+    gender = st.selectbox('Gender', ['Male', 'Female'])
     part_time_job = st.selectbox('Do you have a part-time job?', ['Yes', 'No'])
     absence_days = st.number_input('Number of absence days', min_value=0, max_value=30, value=0)
     extracurricular_activities = st.selectbox('Do you participate in extracurricular activities?', ['Yes', 'No'])
@@ -64,26 +64,19 @@ def page_academic_details():
     st.title('Academic Details')
     st.write('Please provide your academic details.')
 
-    # Dropdown menu for stream selection
-    stream = st.selectbox('Select Stream', ['Science', 'Commerce', 'Arts'])
-
+    
     # Input fields for subject marks based on selected stream
-    if stream == 'Science':
-        st.write('Enter marks for Science stream subjects')
-        physics_marks = st.number_input('Physics', min_value=0, max_value=100, value=0)
-        chemistry_marks = st.number_input('Chemistry', min_value=0, max_value=100, value=0)
-        mathematics_marks = st.number_input('Mathematics', min_value=0, max_value=100, value=0)
-        biology_marks = st.number_input('Biology', min_value=0, max_value=100, value=0)
-    elif stream == 'Commerce':
-        st.write('Enter marks for Commerce stream subjects')
-        accounts_marks = st.number_input('Accounts', min_value=0, max_value=100, value=0)
-        business_studies_marks = st.number_input('Business Studies', min_value=0, max_value=100, value=0)
-        economics_marks = st.number_input('Economics', min_value=0, max_value=100, value=0)
-    elif stream == 'Arts':
-        st.write('Enter marks for Arts stream subjects')
-        history_marks = st.number_input('History', min_value=0, max_value=100, value=0)
-        geography_marks = st.number_input('Geography', min_value=0, max_value=100, value=0)
-        political_science_marks = st.number_input('Political Science', min_value=0, max_value=100, value=0)
+    mathematics_marks = st.number_input('Mathematics', min_value=0, max_value=100, value=0)
+    history_marks = st.number_input('History', min_value=0, max_value=100, value=0)
+    physics_marks = st.number_input('Physics', min_value=0, max_value=100, value=0)
+    chemistry_marks = st.number_input('Chemistry', min_value=0, max_value=100, value=0)
+    
+    biology_marks = st.number_input('Biology', min_value=0, max_value=100, value=0)
+
+    english_marks = st.number_input('English', min_value=0, max_value=100, value=0)
+    
+    geography_marks = st.number_input('Geography', min_value=0, max_value=100, value=0)
+    
 
     # Button to proceed
     if st.button('Proceed'):
