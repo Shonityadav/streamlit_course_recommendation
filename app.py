@@ -1,5 +1,6 @@
 import streamlit as st
 
+# Function to display the home page
 def page_home():
     st.title('Counsello')
     st.write('Welcome to Counsello!')
@@ -17,6 +18,11 @@ def page_home():
         # Logic to save user satisfaction for Counsello
         st.write('User satisfaction for Counsello:', counsello_satisfaction)
 
+        # Calculate and display percentages of Yes and No responses for Counsello
+        counsello_yes_percentage, counsello_no_percentage = calculate_percentage('Counsello')
+        st.write(f"Percentage of 'Yes' responses for Counsello: {counsello_yes_percentage:.2f}%")
+        st.write(f"Percentage of 'No' responses for Counsello: {counsello_no_percentage:.2f}%")
+
     # Add navbar with poll for user satisfaction with College Mentors
     st.sidebar.subheader('College Mentors')
     college_mentors_satisfaction = st.sidebar.radio('Are you satisfied with College Mentors?', ('Yes', 'No'))
@@ -26,11 +32,17 @@ def page_home():
         # Logic to save user satisfaction for College Mentors
         st.write('User satisfaction for College Mentors:', college_mentors_satisfaction)
 
+        # Calculate and display percentages of Yes and No responses for College Mentors
+        college_mentors_yes_percentage, college_mentors_no_percentage = calculate_percentage('College Mentors')
+        st.write(f"Percentage of 'Yes' responses for College Mentors: {college_mentors_yes_percentage:.2f}%")
+        st.write(f"Percentage of 'No' responses for College Mentors: {college_mentors_no_percentage:.2f}%")
+
     # Display the "Start" button
     if st.button('Start'):
         # Set session state to navigate to the user details page
         st.session_state['page'] = 'User Details'
 
+# Function to display the user details page
 def page_user_details():
     st.title('User Details')
     st.write('Please provide further details.')
@@ -47,45 +59,41 @@ def page_user_details():
         # Set session state to navigate to the academic details page
         st.session_state['page'] = 'Academic Details'
 
+# Function to display the academic details page
 def page_academic_details():
     st.title('Academic Details')
     st.write('Please provide your academic details.')
 
     # Dropdown menu for stream selection
-    stream = st.selectbox('Select Stream', ['Science with Maths','Science without Maths', 'Commerce', 'Arts'])
+    stream = st.selectbox('Select Stream', ['Science', 'Commerce', 'Arts'])
 
     # Input fields for subject marks based on selected stream
-    if stream == 'Science with Maths':
+    if stream == 'Science':
         st.write('Enter marks for Science stream subjects')
         physics_marks = st.number_input('Physics', min_value=0, max_value=100, value=0)
         chemistry_marks = st.number_input('Chemistry', min_value=0, max_value=100, value=0)
         mathematics_marks = st.number_input('Mathematics', min_value=0, max_value=100, value=0)
-        english_marks = st.number_input('English', min_value=0, max_value=100, value=0)
-        
+        biology_marks = st.number_input('Biology', min_value=0, max_value=100, value=0)
     elif stream == 'Commerce':
         st.write('Enter marks for Commerce stream subjects')
         accounts_marks = st.number_input('Accounts', min_value=0, max_value=100, value=0)
         business_studies_marks = st.number_input('Business Studies', min_value=0, max_value=100, value=0)
         economics_marks = st.number_input('Economics', min_value=0, max_value=100, value=0)
-        english_marks = st.number_input('English', min_value=0, max_value=100, value=0)
-
     elif stream == 'Arts':
         st.write('Enter marks for Arts stream subjects')
         history_marks = st.number_input('History', min_value=0, max_value=100, value=0)
         geography_marks = st.number_input('Geography', min_value=0, max_value=100, value=0)
         political_science_marks = st.number_input('Political Science', min_value=0, max_value=100, value=0)
-        english_marks = st.number_input('English', min_value=0, max_value=100, value=0)
-
-    elif stream == 'Science without Maths':
-        physics_marks = st.number_input('Physics', min_value=0, max_value=100, value=0)
-        chemistry_marks = st.number_input('Chemistry', min_value=0, max_value=100, value=0)
-        biology_marks = st.number_input('Biology', min_value=0, max_value=100, value=0)
-        english_marks = st.number_input('English', min_value=0, max_value=100, value=0)
 
     # Button to proceed
     if st.button('Proceed'):
         # Logic to proceed to the next step or generate course recommendations
         st.write('Proceeding to the next step...')
+
+# Function to calculate percentages of Yes and No responses for satisfaction polls
+def calculate_percentage(satisfaction_poll):
+    # Placeholder for actual logic to calculate percentages
+    return 50.0, 50.0
 
 # Define a dictionary to map page names to their corresponding functions
 pages = {
